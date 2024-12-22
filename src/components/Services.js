@@ -17,7 +17,7 @@ const ServiceCard = ({ icon, title, description }) => {
 
 const Services = () => {
   return (
-    <div className='services-container'>
+    <div className='services-container' id="services">
       <h2 className='services-title'>Services</h2>
       <div className='services-grid'> 
         <ServiceCard

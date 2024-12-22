@@ -2,39 +2,64 @@
     margin:0;
     padding: 0;
 }
-
+:target {
+  scroll-margin-top: 30vh;
+}
 body{
     font-family: 'Inter', sans-serif;
     background-color: 	#eeeeee;
 }
-
+html {
+  scroll-behavior: smooth;  
+}
 /************ Navbar Css ************/
-.navbar,.navbar-cont{
-    display: flex;
-    position: sticky;
-    top: 0;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 5vh;
-    background-color: 	#eeeeee;
-    z-index: 10;
+.navbar, .navbar-cont {
+  display: flex;
+  position: sticky;
+  top: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: #eeeeee;
+  z-index: 10;
 }
 
-.navbar-logo{
-    height: 2vh;
-    width: auto;
-    padding: 2vh;
+.navbar-logo {
+  height: 3vh;
+  width: auto;
+  padding: 1vh;
 }
 
-.navbar-links a{
-    text-decoration: none;
-    justify-content: space-between;
-    padding: 0 2.5vh;
-    text-align: center;
-    color: #3f3f3f;
-    font-size: 1.7vh;
+.navbar-links {
+  display: flex;
+  flex-direction: row;  
+  justify-content: center;   
+  align-items: center;  
+}
+
+.navbar-links ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  list-style: none;   
+}
+
+.navbar-links a {
+  text-decoration: none;
+  padding: 0 2.5vh;
+  color: #3f3f3f;
+  font-size: 1.7vh;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #007bff;  
 }
 
 /************ Banner Css ************/
@@ -96,10 +121,6 @@ body{
   background-color: rgba(255, 255, 255, 1); 
 }
 
-
-
-
-
 /************ Services Css ************/
   .services-container {
     margin-top: 1vh;
@@ -122,7 +143,6 @@ body{
     height: 11px; 
     background-color: white; 
   }
-  
   
   .services-title {
     margin-top: 5vh;
@@ -190,120 +210,88 @@ body{
   }
   
 /************ Works Css ************/
-.carousel-container {
-  display: flex;
-  height: 100%;
-  background-color: white;
+.marquee-container{
   border-top: 11px solid white;
   border-bottom: 11px solid white;
 }
-
-.carousel-wrapper {
+.marquee-item {
   position: relative;
-  max-width: 100%;
-  margin: 0 auto;
-  z-index: 6;
-  overflow-x: hidden;
+  display: inline-block;
+  margin-right: 1.5vh; 
 }
 
-.carousel-image {
-  width: 100%;
-  height: 100%;
-  gap: 1vh;
-  transition: transform 0.5s ease;
-}
-
-.carousel-item {
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-item:hover .carousel-image {
-  transform: scale(1.05); 
+.marquee-image {
+  width: auto;
+  height: 30vh;
+  object-fit: cover;
 }
 
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(102, 102, 102, 0.7); 
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); 
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.carousel-item:hover .overlay {
+.marquee-item:hover .overlay {
   opacity: 1;
 }
 
-.details-btn {
-  color: 	#eeeeee;
+.detail-button {
   padding: 10px 20px;
-  background-color: 	#0088cc;
-  border: none;
+  font-size: 16px;
+  color: white;
+  background-color: #007BFF;
   border-radius: 3vh;
+  border: transparent;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.details-btn:hover {
-  background-color: 	#0088cc;
+.detail-button:hover {
+  background-color: #007BFF;
 }
 
 /************ Comments Css ************/
-.comment-container {
+.comments-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
-  position: relative;
+  text-align: center;
+  gap: 10px;
+  width: 90%;  
+  margin: 0 auto;
+  flex-wrap: wrap;
+  height: 60vh;
+  position: relative;  
+  z-index: 1;  
 }
 
-.comment-slider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 90%;
-  max-width: 400px;
-  height: 500px; 
-  overflow: hidden;
+.comments-container::after {
+  content: '';
+  position: absolute;
+  bottom: -11px;  
+  left: 0;
+  width: 100%;   
+  height: 11px;
+  background-color: white;   
+  z-index: -1; 
+  transform: translateX(-5%); 
+  width: calc(100vw - 17px); 
 }
 
 .comment-card {
-  width: 100%;
-  height: 100%;
+  height: 50vh; 
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 1;
-}
-
-/* Kartı sola kaydırma */
-.comment-card.swipe-left {
-  transform: translateX(-100%);  /* Kart sola kayar */
-  opacity: 0;  /* Kart kaybolur */
-}
-
-/* Kartı sağa kaydırma */
-.comment-card.swipe-right {
-  transform: translateX(100%);  /* Kart sağa kayar */
-  opacity: 0;  /* Kart kaybolur */
-}
-
-.comment-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* Görselin kutuya uyumlu olmasını sağlar */
 }
 
 
@@ -311,25 +299,26 @@ body{
 
 .contact-container {
   display: flex;
-  justify-content: space-between;
-  max-width: 100%;
-  margin: 0 auto;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 30px;
+  
 }
 
-.contact-info,
-.contact-form {
-  width: 48%; 
-}
-
+.contact-form,
 .contact-info {
-  padding-left: 20px; 
+  flex: 1 1 300px;
+  max-width: 500px;
+  border-radius: 12px;
+  padding: 20px;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
+.contact-form-title,
+.contact-info-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .form-group {
@@ -337,45 +326,98 @@ body{
 }
 
 .form-group label {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.form-control {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.btn {
-  background-color: #0088cc;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3vh;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.btn:hover {
-  border-radius: 3vh;
-  background-color: #0088cc;
-}
-
-.status-message {
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.my-info {
-  margin-top: 30px;
-  font-size: 14px;
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
   color: #555;
 }
 
-.my-info h3 {
-  font-size: 18px;
-  font-weight: bold;
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #007aff;
+  outline: none;
+}
+
+.form-submit-button {
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 3vh;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-submit-button:hover {
+  background-color: #005bb5;
+}
+
+.contact-info-item {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+}
+
+/************ Footer Css ************/
+.footer {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;   
+}
+
+.footer-link {
+  font-size: 0.9rem;
+  color: #007aff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link img {
+  width: 24px;  
+  height: 24px;
+  transition: transform 0.3s ease;   
+}
+
+.footer-link:hover {
+  color: #005bb5;
+}
+
+.footer-link:hover img {
+  transform: scale(1.2);   
 }

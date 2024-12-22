@@ -39,7 +39,7 @@ const Banner = () => {
   ];
 
   return (
-    <section className="banner" id="Home">
+    <section className="banner" id="home">
       <div className="banner-background">
         <img src={bannerimg} alt="Banner" />
       </div>

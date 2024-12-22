@@ -1,50 +1,43 @@
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    surname: '',
-    phone: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const [statusMessage, setStatusMessage] = useState('');
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     emailjs
-      .sendForm(
-        'your_service_id', 
-        'your_template_id', 
-        e.target, 
-        'your_user_id' 
+      .send(
+        "your_service_id",
+        "your_template_id",
+        formData,
+        "your_user_id"
       )
       .then(
-        (result) => {
-          setStatusMessage('Message sent successfully!');
+        (response) => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
         },
         (error) => {
-          setStatusMessage('Message sending failed, please try again.');
+          alert("Failed to send message. Please try again later.");
         }
       );
   };
 
   return (
-    <div className="contact-container">
+    <div className="contact-container" id="contact">
       <div className="contact-form">
-        <h2>Contact Me</h2>
-        <form onSubmit={handleSubmit} className="contact-form">
+        <h2 className="contact-form-title">Get in Touch</h2>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
@@ -52,33 +45,9 @@ const Contact = () => {
               id="name"
               name="name"
               value={formData.name}
-              onChange={handleInputChange}
-              className="form-control"
+              onChange={handleChange}
               required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="surname">Surname</label>
-            <input
-              type="text"
-              id="surname"
-              name="surname"
-              value={formData.surname}
-              onChange={handleInputChange}
-              className="form-control"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone">Phone</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="form-control"
-              required
+              className="form-input"
             />
           </div>
           <div className="form-group">
@@ -88,9 +57,9 @@ const Contact = () => {
               id="email"
               name="email"
               value={formData.email}
-              onChange={handleInputChange}
-              className="form-control"
+              onChange={handleChange}
               required
+              className="form-input"
             />
           </div>
           <div className="form-group">
@@ -99,24 +68,22 @@ const Contact = () => {
               id="message"
               name="message"
               value={formData.message}
-              onChange={handleInputChange}
-              className="form-control"
+              onChange={handleChange}
               required
-            />
+              className="form-textarea"
+            ></textarea>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Send
+          <button type="submit" className="form-submit-button">
+            Send Message
           </button>
         </form>
-
-        {statusMessage && <p className="status-message">{statusMessage}</p>}
       </div>
-
       <div className="contact-info">
-        <h3>My Information</h3>
-        <p>Email: your_email@example.com</p>
-        <p>Phone: +1234567890</p>
-        <p>Address: Your Address Here</p>
+        <h2 className="contact-info-title">Contact Information</h2>
+        <p className="contact-info-item">Yunus Emre Konar</p>
+        <p className="contact-info-item">Full Stack Developer</p>
+        <p className="contact-info-item">Email: your-email@example.com</p>
+        <p className="contact-info-item">Phone: +123 456 7890</p>
       </div>
     </div>
   );

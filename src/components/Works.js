@@ -1,46 +1,73 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from "react";
+import Marquee from "react-fast-marquee";
 
-import Brooklyn from "../assets/works-1.jpg";
-import Macao from "../assets/works-2.jpg";
-import Navada from "../assets/works-1.jpg";
+// Görselleri içe aktar
+import image1 from '../assets/works-1.jpg';
+import image2 from '../assets/works-2.jpg';
+import image3 from '../assets/works-3.jpg';
 
-function CarouselGames() {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: false,
+const App = () => {
+  const [speed, setSpeed] = useState(30);
+
+  const handleMouseEnter = () => {
+    setSpeed(100);
   };
 
-  const images = [Brooklyn, Macao, Navada, Brooklyn, Macao, Navada];
+  const handleMouseLeave = () => {
+    setSpeed(30);
+  };
 
   return (
-    <div className="carousel-container">
-      <div className="carousel-wrapper">
-        <Slider {...settings}>
-          {images.map((image, index) => (
-            <div key={index} className="carousel-item">
-              <img
-                src={image}
-                alt={`Poster ${image.split("/").pop().split(".")[0]}`}
-                className="carousel-image"
-              />
-              <div className="overlay">
-                <button className="details-btn">Details</button>
-              </div>
-            </div>
-          ))}
-        </Slider>
+    <Marquee
+      style={{ backgroundColor: "white" }}
+      className="marquee-container"
+      play={true}
+      pauseOnHover={false}
+      direction="left"
+      speed={speed}
+      loop={0}
+      gradient={false}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="marquee-item" id="works">
+        <img src={image1} alt="Item 1" className="marquee-image" />
+        <div className="overlay">
+          <button className="detail-button">Detail</button>
+        </div>
       </div>
-    </div>
+      <div className="marquee-item">
+        <img src={image2} alt="Item 2" className="marquee-image" />
+        <div className="overlay">
+          <button className="detail-button">Detail</button>
+        </div>
+      </div>
+      <div className="marquee-item">
+        <img src={image3} alt="Item 3" className="marquee-image" />
+        <div className="overlay">
+          <button className="detail-button">Detail</button>
+        </div>
+      </div>
+      <div className="marquee-item">
+        <img src={image1} alt="Item 1" className="marquee-image" />
+        <div className="overlay">
+          <button className="detail-button">Detail</button>
+        </div>
+      </div>
+      <div className="marquee-item">
+        <img src={image2} alt="Item 2" className="marquee-image" />
+        <div className="overlay">
+          <button className="detail-button">Detail</button>
+        </div>
+      </div>
+      <div className="marquee-item">
+        <img src={image3} alt="Item 3" className="marquee-image" />
+        <div className="overlay">
+          <button className="detail-button">Detail</button>
+        </div>
+      </div>
+    </Marquee>
   );
-}
+};
 
-export default CarouselGames;
+export default App;
