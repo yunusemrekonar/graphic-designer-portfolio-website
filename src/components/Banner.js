@@ -44,12 +44,12 @@ const Banner = () => {
         <img src={bannerimg} alt="Banner" />
       </div>
       <div className="banner-content">
-        <div className="banner-text-slide">
-          <AnimatedText 
-            texts={texts} 
-            typingSpeed={100} 
-            erasingSpeed={50} 
-            delayBetweenTexts={1000} 
+        <button className="detail-button-banner" onClick={() => window.location.href = '#contact'}>Let's Contact</button>        <div className="banner-text-slide">
+          <AnimatedText
+            texts={texts}
+            typingSpeed={100}
+            erasingSpeed={50}
+            delayBetweenTexts={1000}
           />
         </div>
       </div>

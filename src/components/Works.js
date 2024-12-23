@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
-
-// Görselleri içe aktar
 import image1 from '../assets/works-1.jpg';
 import image2 from '../assets/works-2.jpg';
 import image3 from '../assets/works-3.jpg';
@@ -33,37 +31,49 @@ const App = () => {
       <div className="marquee-item" id="works">
         <img src={image1} alt="Item 1" className="marquee-image" />
         <div className="overlay">
-          <button className="detail-button">Detail</button>
+          <button className="detail-button" onClick={() => window.location.href = 'https://example.com'}>
+            Detail
+          </button>
         </div>
       </div>
       <div className="marquee-item">
         <img src={image2} alt="Item 2" className="marquee-image" />
         <div className="overlay">
-          <button className="detail-button">Detail</button>
-        </div>
+          <button className="detail-button" onClick={() => window.location.href = 'https://example.com'}>
+            Detail
+          </button>        
+          </div>
       </div>
       <div className="marquee-item">
         <img src={image3} alt="Item 3" className="marquee-image" />
         <div className="overlay">
-          <button className="detail-button">Detail</button>
-        </div>
+          <button className="detail-button" onClick={() => window.location.href = 'https://example.com'}>
+            Detail
+          </button>        
+          </div>
       </div>
       <div className="marquee-item">
         <img src={image1} alt="Item 1" className="marquee-image" />
         <div className="overlay">
-          <button className="detail-button">Detail</button>
-        </div>
+          <button className="detail-button" onClick={() => window.location.href = 'https://example.com'}>
+            Detail
+          </button>       
+          </div>
       </div>
       <div className="marquee-item">
         <img src={image2} alt="Item 2" className="marquee-image" />
         <div className="overlay">
-          <button className="detail-button">Detail</button>
-        </div>
+          <button className="detail-button" onClick={() => window.location.href = 'https://example.com'}>
+            Detail
+          </button>        
+          </div>
       </div>
       <div className="marquee-item">
         <img src={image3} alt="Item 3" className="marquee-image" />
         <div className="overlay">
-          <button className="detail-button">Detail</button>
+          <button className="detail-button" onClick={() => window.location.href = 'https://example.com'}>
+            Detail
+          </button>
         </div>
       </div>
     </Marquee>

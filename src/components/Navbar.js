@@ -5,7 +5,9 @@ const Navbar = () => {
   return (
     <section className='navbar' id='Navbar'>
       <div className='navbar-cont'>
-        <img className='navbar-logo' src={logo} alt="Logo" />
+        <a href="/">
+          <img className="navbar-logo" src={logo} alt="Logo" />
+        </a>
 
         <div className='navbar-links'>
           <ul>
@@ -13,6 +15,7 @@ const Navbar = () => {
             <li><a href="#services">Services</a></li>
             <li><a href="#works">Works</a></li>
             <li><a href="#comments">Comments</a></li>
+            <li><a href="#references">References</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>

@@ -98,8 +98,20 @@ html {
   border-right: 2px solid #007BFF;
   display: inline-block;
   animation: blink-caret 0.75s step-end infinite;
-  margin-left: 13.5rem;
-  margin-top: 6rem;
+  margin-left: 14rem;
+  margin-top: 3.6rem;
+}
+
+.detail-button-banner{
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007BFF;
+  border-radius: 3vh;
+  border: transparent;
+  cursor: pointer;
+  transform: translateY(48vh);
+  margin-left: 11vh;
 }
 
 @keyframes blink-caret {
@@ -124,8 +136,8 @@ html {
 /************ Services Css ************/
   .services-container {
     margin-top: 1vh;
-    height: 60vh;
-    width: 90%;
+    height: 50vh;
+    width: 76%;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -158,7 +170,7 @@ html {
     justify-content: flex-start; 
     text-align: center;
     align-items: center;
-    margin: 0 auto; 
+    margin: 3vh auto; 
   }
   
   .service-card {
@@ -259,6 +271,35 @@ html {
   background-color: #007BFF;
 }
 
+
+/************ Banner2 Css ************/
+
+.banner2 {
+  position: relative;
+  max-width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.banner-background2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
+.banner-background2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /************ Comments Css ************/
 .comments-container {
   display: flex;
@@ -293,7 +334,40 @@ html {
   justify-content: center;
   align-items: center;
 }
+/************ References Css ************/
+.references-container{
+  position: relative;
+  max-width: 81.5%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin: 30px auto;
+}
+.references-item {
+  position: relative;
+  display: inline-block;
+  margin-right: 2vh; 
+}
 
+.references-image {
+  width: auto;
+  height: 10vh;
+  margin-right: 4vh;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); 
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
 
 /************ Contact Css ************/
 
@@ -420,4 +494,9 @@ html {
 
 .footer-link:hover img {
   transform: scale(1.2);   
+}
+.konarworkslogo{
+  max-height: 3vh;
+  width: auto;
+  margin-top: 0.5vh;
 }
